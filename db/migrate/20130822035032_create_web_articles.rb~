@@ -1,8 +1,0 @@
-class CreateWebArticles < ActiveRecord::Migration
-  def change
-    create_table :web_articles do |t|
-
-      t.timestamps
-    end
-  end
-end
