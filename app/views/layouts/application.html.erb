@@ -71,6 +71,15 @@ float: right;
 
 
 
+ul.deepsmallNav {
+	display: none;
+}
+ul.smallNav li:hover > ul {
+		display: block;
+}
+
+
+
 /* Topmeny */
 
 
@@ -105,23 +114,37 @@ padding: 0 0em 0 0em;
 								   <div class="extended">
 										<div class="arrow-up"></div>
 											<ul class="smallNav">
-												<% menu_item.web_links.each_with_index do |web_link|%>
-														<li>
-															<%= link_to  web_link.name , web_link_path(web_link) %>													
-														</li>
-												<% end 	%>
-													
- 												<% menu_item.web_folders.each_with_index do |web_folder|%>
+												 <li>
+														<%= link_to 'Links','#'%>
+													<ul class="deepsmallNav">
+														<% menu_item.web_links.each_with_index do |web_link|%>
+															<li>
+																<%= link_to  web_link.name , web_link_path(web_link) %>													
+															</li>
+														<% end 	%>
+												  </ul>														
+												</li>
+												<li>
+													<%= link_to 'Folders','#'%>
+												  <ul class="deepsmallNav">
+														<% menu_item.web_folders.each_with_index do |web_folder|%>
 														<li>
 															<%= link_to  web_folder.name , web_folder_path(web_folder) %>													
 														</li>
-												<% end 	%>
+												    <% end 	%>
+												  </ul>					
+												</li>
 
-											 <% menu_item.web_articles.each_with_index do |web_article|%>
+												 <li>
+														<%= link_to 'Articles','#'%>
+											      <ul class="deepsmallNav">
+														 <% menu_item.web_articles.each_with_index do |web_article|%>
 														<li>
 															<%= link_to  web_article.name , web_article_path(web_article) %>													
 														</li>
-												<% end 	%>
+													  <% end 	%>
+												  </ul>	
+												</li>
 												
 											</ul>
 										</div>
