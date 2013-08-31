@@ -62,6 +62,7 @@ RailsAdmin.config do |config|
  config.model WebArticle  do
     edit do
        field :name
+       field :web_menu_item
        field :summary
 #      # For RailsAdmin >= 0.5.0
 #      field :content, :ck_editor
@@ -72,6 +73,13 @@ RailsAdmin.config do |config|
     end
   end
 
+
+
+
+
+
+#using cancan
+  config.authorize_with :cancan
 
 
 end
