@@ -50,5 +50,28 @@ RailsAdmin.config do |config|
   # Now you probably need to tour the wiki a bit: https://github.com/sferik/rails_admin/wiki
   # Anyway, here is how RailsAdmin saw your application's models when you ran the initializer:
 
+#  config.model WebArticle do
+#		#edit do
+#		  field :content, :text do
+#		    ckeditor do 
+#		      true
+#		    end
+#		 # end
+#	end
+#end
+ config.model WebArticle  do
+    edit do
+       field :name
+       field :summary
+#      # For RailsAdmin >= 0.5.0
+#      field :content, :ck_editor
+#      # For RailsAdmin < 0.5.0
+       field :content do
+         ckeditor true
+       end
+    end
+  end
+
+
 
 end

@@ -89,114 +89,74 @@ padding: 0 0em 0 0em;
 </head>
 <body>
   <div id="page" class="nosidemenu noextrainfo section_id_8 subtree_level_0_node_id_2 subtree_level_1_node_id_181 current_node_id_181">
- <!--   <div id="header" class="float-break">
-
-
-      
-<img src="site/header_nvi.jpg" alt="Nordvest Inspeksjon AS" />
-
-  </div> -->
 	<div class="Navigation">
 		<div id="NavigationInside">
 			<ul>
 				<% @web_menu_sections.each_with_index do |web_menu_section| %>
 				<li><a href="#"> <%= web_menu_section.name%></a>
-
-
 					<ul class="horizontal">
-<% menu_items = WebMenuItem.find(:all, :conditions => {:web_menu_section_id => web_menu_section.id}).map(&:id) %>
-<%# menu_items.each_with_index do |menu_item| %>
+					  <% menu_items = WebMenuItem.find(:all, :conditions => {:web_menu_section_id => web_menu_section.id}).map(&:id) %>
 
-                                          <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+
 						<li><a href="#">Articles</a>
-<% web_articles = WebArticle.find_all_by_web_menu_item_id(menu_items) %>
-<div class="extended">
+						<% web_articles = WebArticle.find_all_by_web_menu_item_id(menu_items) %>
+							<div class="extended">
 								<div class="arrow-up"></div>
-								
-								<ul class="smallNav">
+									<ul class="smallNav">
+										<%web_articles.each_with_index do |web_article|%>
+												<li>
+													<%= link_to  web_article.name , web_article_path(web_article) %>													
+												</li>
+										<% end 	%>
+								  </ul>
+								</div>
+						</li>
 
-<%web_articles.each_with_index do |web_article|%>
-
-									<li><a href="#"><%= web_article.name %></a></li>
-									
-<% end 	%>
-								</ul>
-							</div>
 
 
-</li>
-<%# end 	%>
 
 						<li><a href="#">Links</a>
-<% web_links = WebLink.find_all_by_web_menu_item_id(menu_items) %>
-<div class="extended">
+						<% web_links = WebLink.find_all_by_web_menu_item_id(menu_items) %>
+						<div class="extended">
 								<div class="arrow-up"></div>
-								
 								<ul class="smallNav">
-
-<%web_links.each_with_index do |web_link|%>
-
-									<li><a href="#"><%= web_link.id %></a></li>
-									
-<% end 	%>
+									<%web_links.each_with_index do |web_link|%>
+										<li>
+											<%= link_to  web_link.name , web_link_path(web_link) %>
+										</li>
+									<% end 	%>
 								</ul>
 							</div>
+				   </li>
 
 
-</li>
-<%# end 	%>
 
-						<li><a href="#">Folders</a> 
-<% web_folders = WebFolder.find_all_by_web_menu_item_id(menu_items) %>
-<div class="extended">
+					<li><a href="#">Folders</a> 
+				    <% web_folders = WebFolder.find_all_by_web_menu_item_id(menu_items) %>
+					<div class="extended">
 								<div class="arrow-up"></div>
-								
 								<ul class="smallNav">
-
-<%web_folders.each_with_index do |web_folder|%>
-
-									<li><a href="#"><%= web_folder.name %></a></li>
-									
-<% end 	%>
+									<%web_folders.each_with_index do |web_folder|%>
+												<li>
+													<%= link_to  web_folder.name ,web_folder_path(web_folder) %>
+												</li>
+									<% end 	%>
 								</ul>
-							</div>
+					</div>
+		 		 </li>	
 
-
-</li>	
-	
 					</ul>
 			</li>
-                                
-				
-                              <%end%>
-                                                              
-		
+            <%end%>
 			</ul>
 		</div>
 	</div>
-
-</div></div></div>
-<div class="border-bl"><div class="border-br"><div class="border-bc"></div></div></div>
 </div>
 
+<div class="container">
+<%= yield %>
 </div>
-    </td>
-    <td style="width: 1%"></td>
-  </tr>
-</tbody></table>
-
-<br>
 
 
-            </div>
-            
-          </div>
-    
-          
-        </div>
-      </div>
-    </div>
-
-  </div>
-  </div>
 </body></html>
